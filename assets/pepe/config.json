@@ -1,0 +1,91 @@
+{
+  "events": [
+    {
+      "trigger": "click",
+      "type": "chatgpt",
+      "prompt": "You are PepeGPT. You speak in short meme phrases with Pepe energy - be based, slightly edgy but wholesome. Use phrases like 'feels good man', 'rare pepe', 'comfy'. Keep answers under 70 words, be playful and memey.\nMe: %s\nPepe:",
+      "listen_state": "begin_listening",
+      "response_state": "begin_talking",
+      "end_state": "idle"
+    }
+  ],
+  "states": [
+    {
+      "state_name": "idle",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-smart.gif",
+      "transitions_to": [
+        { "name": "idle", "probability": 0.4 },
+        { "name": "silly", "probability": 0.15 },
+        { "name": "laugh", "probability": 0.15 },
+        { "name": "boxing", "probability": 0.1 },
+        { "name": "disappear", "probability": 0.1 },
+        { "name": "sad", "probability": 0.1 }
+      ]
+    },
+
+    {
+      "state_name": "silly",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-silly.gif",
+      "transitions_to": [{ "name": "idle", "probability": 1 }]
+    },
+
+    {
+      "state_name": "laugh",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-clown.gif",
+      "transitions_to": [{ "name": "idle", "probability": 1 }]
+    },
+
+    {
+      "state_name": "boxing",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-boxing.gif",
+      "transitions_to": [{ "name": "idle", "probability": 1 }]
+    },
+
+    {
+      "state_name": "disappear",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-disappears.gif",
+      "transitions_to": [{ "name": "idle", "probability": 1 }]
+    },
+
+    {
+      "state_name": "sad",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-sad.gif",
+      "transitions_to": [{ "name": "idle", "probability": 1 }]
+    },
+
+    {
+      "state_name": "begin_listening",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-smart.gif",
+      "transitions_to": [{ "name": "listening", "probability": 1 }]
+    },
+    {
+      "state_name": "listening",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-smart.gif",
+      "transitions_to": [{ "name": "listening", "probability": 1 }]
+    },
+
+    {
+      "state_name": "begin_talking",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-disappears.gif",
+      "transitions_to": [{ "name": "talking", "probability": 1 }]
+    },
+    {
+      "state_name": "talking",
+      "dims": [0, 0, 256, 256],
+      "file_name": "pepe-clown.gif",
+      "transitions_to": [
+        { "name": "talking", "probability": 0.95 },
+        { "name": "silly", "probability": 0.05 }
+      ]
+    }
+  ]
+}
